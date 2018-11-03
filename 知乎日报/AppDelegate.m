@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
+//#import "ZJIHomeViewController.h"
+//#import "MMDrawerController.h"
+//#import "UIViewController+MMDrawerController.h"
+//#import "ZJILeftViewController.h"
+#import "ZJIContainerViewController.h"
 @interface AppDelegate ()
+
+//@property (nonatomic, strong)MMDrawerController *drawerController;
 
 @end
 
@@ -16,7 +22,44 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+//    UIViewController *homeViewController = [[ZJIHomeViewController alloc]init];
+//    UIViewController *leftViewController = [[ZJILeftViewController alloc]init];
+//    UINavigationController *homeNavigationController = [[UINavigationController alloc]initWithRootViewController:homeViewController];
+//    UINavigationController *leftNavigationController = [[UINavigationController alloc]initWithRootViewController:leftViewController];
+//    self.window.rootViewController = homeNavigationController;
+    
+//    self.drawerController = [[MMDrawerController alloc]initWithCenterViewController:homeNavigationController leftDrawerViewController:leftNavigationController];
+//
+//    //设置打开/关闭抽起的手势
+//    self.drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+//    self.drawerController.openDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+//    //设置左右两边抽起显示的多少
+//    self.drawerController.maximumLeftDrawerWidth = 220.0;
+//    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+//    [self.window setRootViewController:self.drawerController];
+    //self.window.rootViewController = rootVCLeft;
+    //侧拉门的宽度
+//    [rootVCLeft setMaximumLeftDrawerWidth:300];
+//    //设置侧拉门开与关的动画
+//    [rootVCLeft setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//    [rootVCLeft setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    //侧开内容展示效果
+    //设置向右滑动打开左侧栏
+    //[[MMExampleDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeNone];
+//    [rootVCLeft setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+//        MMDrawerControllerDrawerVisualStateBlock block;
+//        //block =
+//        if(block){
+//            block(drawerController, drawerSide, percentVisible);
+//        }
+//    }];
     // Override point for customization after application launch.
+    //self.window.backgroundColor = [UIColor whiteColor];
+    [self setWindow:[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds]];
+    [self.window setRootViewController:[[ZJIContainerViewController alloc]init]];
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

@@ -1,20 +1,35 @@
 PODS:
   - JSONModel (1.8.0)
   - Masonry (1.1.0)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
 
 DEPENDENCIES:
   - JSONModel
   - Masonry
+  - MMDrawerController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JSONModel
     - Masonry
+    - MMDrawerController
 
 SPEC CHECKSUMS:
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
 
-PODFILE CHECKSUM: 1ca47bd3b5ca41602dc07c3ac34debe12ff92f4a
+PODFILE CHECKSUM: 376d62b11ff195ceff239c7cbf0d795f4489c951
 
 COCOAPODS: 1.5.3

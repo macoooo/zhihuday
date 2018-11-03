@@ -15,6 +15,27 @@
 		970D8F1D21762D21004EDC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 970D8F1C21762D21004EDC48 /* main.m */; };
 		970D8F2721762D21004EDC48 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 970D8F2621762D21004EDC48 /* ____Tests.m */; };
 		970D8F3221762D21004EDC48 /* ____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 970D8F3121762D21004EDC48 /* ____UITests.m */; };
+		9720E8292180ABF400F0E5BA /* 展开侧拉栏-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9720E8282180ABF400F0E5BA /* 展开侧拉栏-2.png */; };
+		9720E82B2180AC4700F0E5BA /* 三横.png in Resources */ = {isa = PBXBuildFile; fileRef = 9720E82A2180AC4700F0E5BA /* 三横.png */; };
+		9720E82D2180AC6C00F0E5BA /* 三横-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9720E82C2180AC6C00F0E5BA /* 三横-2.png */; };
+		9720E82F2180AD0900F0E5BA /* 三横-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9720E82E2180AD0900F0E5BA /* 三横-3.png */; };
+		973B2D4D218202E500510E4D /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 973B2D47218202E300510E4D /* 0.jpg */; };
+		973B2D4F218202E500510E4D /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 973B2D49218202E400510E4D /* 2.jpg */; };
+		973B2D50218202E500510E4D /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 973B2D4A218202E400510E4D /* 4.jpg */; };
+		973B2D51218202E500510E4D /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 973B2D4B218202E400510E4D /* 3.jpg */; };
+		974E4F9A218B017D00D01B3F /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 974E4F99218B017D00D01B3F /* 1.jpg */; };
+		974EB49A217F4CBA0080A9EA /* ZJILeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974EB499217F4CBA0080A9EA /* ZJILeftViewController.m */; };
+		9753DCDB2181C78900EDEA1A /* ZJIScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9753DCDA2181C78900EDEA1A /* ZJIScrollerView.m */; };
+		97575F3A218D835700949E07 /* shezhi-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97575F39218D835700949E07 /* shezhi-2.png */; };
+		97575F3C218D836600949E07 /* xiaoxi-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97575F3B218D836600949E07 /* xiaoxi-2.png */; };
+		97575F3E218D836F00949E07 /* shoucang.png in Resources */ = {isa = PBXBuildFile; fileRef = 97575F3D218D836F00949E07 /* shoucang.png */; };
+		97575F40218D837700949E07 /* shouye-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 97575F3F218D837700949E07 /* shouye-blue.png */; };
+		97662A62218C463D00A01B4D /* ZJIContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97662A61218C463D00A01B4D /* ZJIContainerViewController.m */; };
+		97662A65218C4A4F00A01B4D /* ZJILeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97662A64218C4A4F00A01B4D /* ZJILeftView.m */; };
+		976943922185DDC000D3F30B /* ZJIDataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 976943912185DDC000D3F30B /* ZJIDataUtils.m */; };
+		976943952185E4F900D3F30B /* ZJIHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 976943942185E4F900D3F30B /* ZJIHomeView.m */; };
+		9773F49A217E1073009A0BBC /* ZJIHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9773F499217E1073009A0BBC /* ZJIHomeViewController.m */; };
+		9773F49E217E1538009A0BBC /* ZJIHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9773F49D217E1538009A0BBC /* ZJIHomeModel.m */; };
 		ABF882ADF9D3243991215587 /* libPods-知乎日报.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D22C6F049C019B195F7357 /* libPods-知乎日报.a */; };
 /* End PBXBuildFile section */
 
@@ -50,11 +71,44 @@
 		970D8F1B21762D21004EDC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		970D8F1C21762D21004EDC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		970D8F2221762D21004EDC48 /* 知乎日报Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "知乎日报Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		970D8F2621762D21004EDC48 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ____Tests.m; sourceTree = "<group>"; };
+		970D8F2621762D21004EDC48 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
 		970D8F2821762D21004EDC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		970D8F2D21762D21004EDC48 /* 知乎日报UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "知乎日报UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		970D8F3121762D21004EDC48 /* ____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ____UITests.m; sourceTree = "<group>"; };
+		970D8F3121762D21004EDC48 /* ____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____UITests.m"; sourceTree = "<group>"; };
 		970D8F3321762D21004EDC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9720E8282180ABF400F0E5BA /* 展开侧拉栏-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "展开侧拉栏-2.png"; path = "../../Downloads/展开侧拉栏-2.png"; sourceTree = "<group>"; };
+		9720E82A2180AC4700F0E5BA /* 三横.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "三横.png"; path = "../../Downloads/三横.png"; sourceTree = "<group>"; };
+		9720E82C2180AC6C00F0E5BA /* 三横-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "三横-2.png"; path = "../../Downloads/三横-2.png"; sourceTree = "<group>"; };
+		9720E82E2180AD0900F0E5BA /* 三横-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "三横-3.png"; path = "../../Downloads/三横-3.png"; sourceTree = "<group>"; };
+		973B2D47218202E300510E4D /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 0.jpg; path = ../../Downloads/0.jpg; sourceTree = "<group>"; };
+		973B2D49218202E400510E4D /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = ../../Downloads/2.jpg; sourceTree = "<group>"; };
+		973B2D4A218202E400510E4D /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4.jpg; path = ../../Downloads/4.jpg; sourceTree = "<group>"; };
+		973B2D4B218202E400510E4D /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3.jpg; path = ../../Downloads/3.jpg; sourceTree = "<group>"; };
+		974E4F99218B017D00D01B3F /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = "素材/1.jpg"; sourceTree = "<group>"; };
+		974EB498217F4CBA0080A9EA /* ZJILeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJILeftViewController.h; sourceTree = "<group>"; };
+		974EB499217F4CBA0080A9EA /* ZJILeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJILeftViewController.m; sourceTree = "<group>"; };
+		97517AA1218727A00009E587 /* ZJIHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZJIHomeViewController.h; path = ../../../../.Trash/ZJIHomeViewController.h; sourceTree = "<group>"; };
+		97517AEE21872D720009E587 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		97517AF021872D7E0009E587 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		97517AF121872D810009E587 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		97517AF221872D830009E587 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		9753DCD92181C78900EDEA1A /* ZJIScrollerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZJIScrollerView.h; path = "/Users/qiangshuting/Desktop/知乎日报/知乎日报/Views/ZJIScrollerView.h"; sourceTree = "<absolute>"; };
+		9753DCDA2181C78900EDEA1A /* ZJIScrollerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZJIScrollerView.m; path = "/Users/qiangshuting/Desktop/知乎日报/知乎日报/Views/ZJIScrollerView.m"; sourceTree = "<absolute>"; };
+		97575F39218D835700949E07 /* shezhi-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shezhi-2.png"; path = "../../../Downloads/shezhi-2.png"; sourceTree = "<group>"; };
+		97575F3B218D836600949E07 /* xiaoxi-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "xiaoxi-2.png"; path = "../../../Downloads/xiaoxi-2.png"; sourceTree = "<group>"; };
+		97575F3D218D836F00949E07 /* shoucang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shoucang.png; path = ../../../Downloads/shoucang.png; sourceTree = "<group>"; };
+		97575F3F218D837700949E07 /* shouye-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shouye-blue.png"; path = "../../../Downloads/shouye-blue.png"; sourceTree = "<group>"; };
+		97662A60218C463D00A01B4D /* ZJIContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJIContainerViewController.h; sourceTree = "<group>"; };
+		97662A61218C463D00A01B4D /* ZJIContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJIContainerViewController.m; sourceTree = "<group>"; };
+		97662A63218C4A4F00A01B4D /* ZJILeftView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJILeftView.h; sourceTree = "<group>"; };
+		97662A64218C4A4F00A01B4D /* ZJILeftView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJILeftView.m; sourceTree = "<group>"; };
+		976943902185DDC000D3F30B /* ZJIDataUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJIDataUtils.h; sourceTree = "<group>"; };
+		976943912185DDC000D3F30B /* ZJIDataUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJIDataUtils.m; sourceTree = "<group>"; };
+		976943932185E4F900D3F30B /* ZJIHomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJIHomeView.h; sourceTree = "<group>"; };
+		976943942185E4F900D3F30B /* ZJIHomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJIHomeView.m; sourceTree = "<group>"; };
+		9773F499217E1073009A0BBC /* ZJIHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJIHomeViewController.m; sourceTree = "<group>"; };
+		9773F49C217E1538009A0BBC /* ZJIHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJIHomeModel.h; sourceTree = "<group>"; };
+		9773F49D217E1538009A0BBC /* ZJIHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJIHomeModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +157,16 @@
 		970D8F0121762D1F004EDC48 = {
 			isa = PBXGroup;
 			children = (
+				973B2D47218202E300510E4D /* 0.jpg */,
+				97517AED21872D4C0009E587 /* 素材 */,
+				974E4F99218B017D00D01B3F /* 1.jpg */,
+				973B2D49218202E400510E4D /* 2.jpg */,
+				973B2D4B218202E400510E4D /* 3.jpg */,
+				973B2D4A218202E400510E4D /* 4.jpg */,
+				9720E82A2180AC4700F0E5BA /* 三横.png */,
+				9720E82E2180AD0900F0E5BA /* 三横-3.png */,
+				9720E82C2180AC6C00F0E5BA /* 三横-2.png */,
+				9720E8282180ABF400F0E5BA /* 展开侧拉栏-2.png */,
 				970D8F0C21762D1F004EDC48 /* 知乎日报 */,
 				970D8F2521762D21004EDC48 /* 知乎日报Tests */,
 				970D8F3021762D21004EDC48 /* 知乎日报UITests */,
@@ -127,13 +191,13 @@
 			children = (
 				970D8F0D21762D1F004EDC48 /* AppDelegate.h */,
 				970D8F0E21762D1F004EDC48 /* AppDelegate.m */,
+				9773F4A2217E1914009A0BBC /* Main */,
+				9773F4A1217E18F8009A0BBC /* Views */,
+				9773F49B217E110E009A0BBC /* Controller */,
+				9773F49F217E153C009A0BBC /* Models */,
 				970D8F1021762D1F004EDC48 /* ViewController.h */,
 				970D8F1121762D1F004EDC48 /* ViewController.m */,
-				970D8F1321762D1F004EDC48 /* Main.storyboard */,
-				970D8F1621762D21004EDC48 /* Assets.xcassets */,
-				970D8F1821762D21004EDC48 /* LaunchScreen.storyboard */,
 				970D8F1B21762D21004EDC48 /* Info.plist */,
-				970D8F1C21762D21004EDC48 /* main.m */,
 			);
 			path = "知乎日报";
 			sourceTree = "<group>";
@@ -154,6 +218,77 @@
 				970D8F3321762D21004EDC48 /* Info.plist */,
 			);
 			path = "知乎日报UITests";
+			sourceTree = "<group>";
+		};
+		97517AED21872D4C0009E587 /* 素材 */ = {
+			isa = PBXGroup;
+			children = (
+				97575F39218D835700949E07 /* shezhi-2.png */,
+				97575F3B218D836600949E07 /* xiaoxi-2.png */,
+				97575F3D218D836F00949E07 /* shoucang.png */,
+				97575F3F218D837700949E07 /* shouye-blue.png */,
+				97517AF221872D830009E587 /* 4.jpg */,
+				97517AF121872D810009E587 /* 3.jpg */,
+				97517AF021872D7E0009E587 /* 2.jpg */,
+				97517AEE21872D720009E587 /* 1.jpg */,
+			);
+			path = "素材";
+			sourceTree = "<group>";
+		};
+		9773F49B217E110E009A0BBC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				97517AA1218727A00009E587 /* ZJIHomeViewController.h */,
+				9773F499217E1073009A0BBC /* ZJIHomeViewController.m */,
+				974EB498217F4CBA0080A9EA /* ZJILeftViewController.h */,
+				974EB499217F4CBA0080A9EA /* ZJILeftViewController.m */,
+				97662A60218C463D00A01B4D /* ZJIContainerViewController.h */,
+				97662A61218C463D00A01B4D /* ZJIContainerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9773F49F217E153C009A0BBC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9773F4A0217E16C5009A0BBC /* HomeModel */,
+				976943902185DDC000D3F30B /* ZJIDataUtils.h */,
+				976943912185DDC000D3F30B /* ZJIDataUtils.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9773F4A0217E16C5009A0BBC /* HomeModel */ = {
+			isa = PBXGroup;
+			children = (
+				9773F49C217E1538009A0BBC /* ZJIHomeModel.h */,
+				9773F49D217E1538009A0BBC /* ZJIHomeModel.m */,
+			);
+			path = HomeModel;
+			sourceTree = "<group>";
+		};
+		9773F4A1217E18F8009A0BBC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9753DCD92181C78900EDEA1A /* ZJIScrollerView.h */,
+				9753DCDA2181C78900EDEA1A /* ZJIScrollerView.m */,
+				976943932185E4F900D3F30B /* ZJIHomeView.h */,
+				976943942185E4F900D3F30B /* ZJIHomeView.m */,
+				97662A63218C4A4F00A01B4D /* ZJILeftView.h */,
+				97662A64218C4A4F00A01B4D /* ZJILeftView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9773F4A2217E1914009A0BBC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				970D8F1321762D1F004EDC48 /* Main.storyboard */,
+				970D8F1621762D21004EDC48 /* Assets.xcassets */,
+				970D8F1821762D21004EDC48 /* LaunchScreen.storyboard */,
+				970D8F1C21762D21004EDC48 /* main.m */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,9 +395,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				973B2D50218202E500510E4D /* 4.jpg in Resources */,
+				974E4F9A218B017D00D01B3F /* 1.jpg in Resources */,
+				9720E82B2180AC4700F0E5BA /* 三横.png in Resources */,
+				9720E82D2180AC6C00F0E5BA /* 三横-2.png in Resources */,
+				97575F40218D837700949E07 /* shouye-blue.png in Resources */,
+				973B2D51218202E500510E4D /* 3.jpg in Resources */,
+				973B2D4F218202E500510E4D /* 2.jpg in Resources */,
+				97575F3E218D836F00949E07 /* shoucang.png in Resources */,
+				97575F3C218D836600949E07 /* xiaoxi-2.png in Resources */,
+				97575F3A218D835700949E07 /* shezhi-2.png in Resources */,
 				970D8F1A21762D21004EDC48 /* LaunchScreen.storyboard in Resources */,
+				9720E8292180ABF400F0E5BA /* 展开侧拉栏-2.png in Resources */,
+				973B2D4D218202E500510E4D /* 0.jpg in Resources */,
 				970D8F1721762D21004EDC48 /* Assets.xcassets in Resources */,
 				970D8F1521762D1F004EDC48 /* Main.storyboard in Resources */,
+				9720E82F2180AD0900F0E5BA /* 三横-3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,15 +436,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-知乎日报-checkManifestLockResult.txt",
 			);
@@ -312,9 +456,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976943922185DDC000D3F30B /* ZJIDataUtils.m in Sources */,
 				970D8F1221762D1F004EDC48 /* ViewController.m in Sources */,
+				974EB49A217F4CBA0080A9EA /* ZJILeftViewController.m in Sources */,
 				970D8F1D21762D21004EDC48 /* main.m in Sources */,
+				9753DCDB2181C78900EDEA1A /* ZJIScrollerView.m in Sources */,
+				9773F49E217E1538009A0BBC /* ZJIHomeModel.m in Sources */,
+				97662A65218C4A4F00A01B4D /* ZJILeftView.m in Sources */,
+				97662A62218C463D00A01B4D /* ZJIContainerViewController.m in Sources */,
 				970D8F0F21762D1F004EDC48 /* AppDelegate.m in Sources */,
+				976943952185E4F900D3F30B /* ZJIHomeView.m in Sources */,
+				9773F49A217E1073009A0BBC /* ZJIHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
