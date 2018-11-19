@@ -22,4 +22,16 @@
     NSDate *before = [NSDate dateWithTimeIntervalSinceNow:days*60*60*24];
     return [formatter stringFromDate:before];
 }
++(NSDate *)dateBeforeDays:(NSInteger)days{
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy年MM月dd日"];
+    NSDate *before = [NSDate dateWithTimeIntervalSinceNow:days*60*60*24];
+    return before;
+}
++(NSString *)dateSecondStringBeforeDays:(NSInteger)days{
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyyMMdd"];
+    NSDate *before = [NSDate dateWithTimeIntervalSinceNow:days*60*60*24];
+    return [formatter stringFromDate:before];
+}
 @end

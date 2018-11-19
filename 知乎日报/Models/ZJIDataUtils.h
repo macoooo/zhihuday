@@ -13,5 +13,7 @@
 
 +(NSString *)todayDateString;
 +(NSString *)dateStringBeforeDays:(NSInteger)days;
++(NSString *)dateSecondStringBeforeDays:(NSInteger)days;
 
++(NSDate *)dateBeforeDays:(NSInteger)days;
 @end

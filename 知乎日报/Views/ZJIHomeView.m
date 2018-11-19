@@ -7,20 +7,30 @@
 //
 
 #import "ZJIHomeView.h"
-#define kWidth self.bounds.size.width
-#define kHeight self.bounds.size.height
-
+#import "ZJIStoriesTableViewCell.h"
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+@interface ZJIHomeView()
+@property (nonatomic,strong)dispatch_queue_t queue;
+@end
 
 @implementation ZJIHomeView
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if(self){
-        self.tableView = [[UITableView alloc]initWithFrame:self.frame style:UITableViewStylePlain];
+        _homeModel = [[ZJIHomeModel alloc]init];
+        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) style:UITableViewStylePlain];
+        
+        [self.tableView registerClass:[ZJIStoriesTableViewCell class] forCellReuseIdentifier:@"storiesCell"];
+        
         self.tableView.dataSource = self;
         self.tableView.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
         [self addSubview:_tableView];
         self.backgroundColor = [UIColor whiteColor];
+        
+        self.queue = dispatch_queue_create("sf", NULL);
+       
     }
     return self;
 }
@@ -30,11 +40,12 @@
     if(section == 0){
         return 1;
     }
-    return 10;
+    NSArray *rowCountArray = self.homeModel.stories;
+    return rowCountArray.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return self.homeModelMutableArray.count;
 }
 
 
@@ -44,28 +55,46 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"cell0"];
         if(!cell){
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell0"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             _scrollerView = [[ZJIScrollerView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 300.0/784 * kHeight)];
             _scrollerView.delegate = self;
-            _scrollerView.images = @[
-                                     [UIImage imageNamed:@"1.jpg"],
-                                     [UIImage imageNamed:@"2.jpg"],
-                                     [UIImage imageNamed:@"3.jpg"],
-                                     [UIImage imageNamed:@"4.jpg"],
-                                     [UIImage imageNamed:@"0.jpg"]
-                                     ];
             _scrollerView.currentPageColor = [UIColor orangeColor];
             _scrollerView.pageColor = [UIColor grayColor];
             [cell.contentView addSubview:_scrollerView];
         }
         return cell;
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"cell"];
+        ZJIStoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"storiesCell"];
         if(!cell){
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell = [[ZJIStoriesTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storiesCell"];
         }
-        cell.textLabel.text = [NSString stringWithFormat:@"Left-Demo%ld",indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        ZJIHomeModel *smallModel = self.homeModelMutableArray[indexPath.section];
+        NSArray *storiesArray = [smallModel.stories[indexPath.row] images];
+        NSString *imageString = storiesArray[0];
+        dispatch_async(self.queue, ^{
+            [cell.storiesImageView  sd_setImageWithURL:[NSURL URLWithString:imageString]];
+        });
+        cell.titleLabel.text = [smallModel.stories[indexPath.row] title];
         return cell;
     }
+}
+- (void)fuzhiScrollerImage
+{
+    NSMutableArray *topStoriesArray = [NSMutableArray array];
+    NSArray *topStoryArray = self.homeModel.top_stories;
+    for(int i = 0;i < topStoryArray.count;i++){
+        NSString *imageString = [topStoryArray[i] sdImage];
+        [topStoriesArray addObject:[self getImageFromURL:imageString]];
+    }
+    
+    _scrollerView.images = [NSArray arrayWithArray:topStoriesArray];
+}
+- (UIImage *)getImageFromURL:(NSString *)fileURL{
+    UIImage *result;
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    return result;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

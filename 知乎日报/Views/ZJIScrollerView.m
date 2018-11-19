@@ -6,8 +6,8 @@
 //
 
 #import "ZJIScrollerView.h"
-#define kWidth self.bounds.size.width
-#define kHeight self.bounds.size.height
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
 
 static const int imageBtnCount = 3;
 @interface ZJIScrollerView ()<UIScrollViewDelegate>
@@ -32,7 +32,9 @@ static const int imageBtnCount = 3;
         
         for(int i = 0;i < imageBtnCount;i++){
             UIButton *imageBtn = [[UIButton alloc]init];
+            //UILabel *titleLabel = [[UILabel alloc]init];
             [scrollerView addSubview:imageBtn];
+            //[scrollerView addSubview: titleLabel];
         }
         UIPageControl *pageControl = [[UIPageControl alloc]init];
         [self addSubview:pageControl];
@@ -56,11 +58,14 @@ static const int imageBtnCount = 3;
     //设置三张图片的位置，并为三个按钮添加点击事件
     for(int i = 0;i < imageBtnCount;i++){
         UIButton *imageBtn = self.scrollerView.subviews[i];
+        //UILabel *titleLabel = self.scrollerView.subviews[i];
         [imageBtn addTarget:self action:@selector(imageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         if(self.isScrollDorectionPortrait){
             imageBtn.frame = CGRectMake(0, i * height, width, height);
+            //titleLabel.frame = CGRectMake(0, i * height, width, height);
         }else{
             imageBtn.frame = CGRectMake(i * width, 0, width, height);
+            //titleLabel.frame = CGRectMake(i * width, 0, width, height);
         }
     }
     //设置contentOffSet,显示最中间的图片
@@ -96,6 +101,13 @@ static const int imageBtnCount = 3;
     [self setContent];
     [self startTimer];
 }
+//- (void)setTitle:(NSArray *)title{
+//    _title = title;
+//    self.pageControl.numberOfPages = title.count;
+//    self.pageControl.currentPage = 0;
+//    [self setContent];
+//    [self startTimer];
+//}
 //设置显示内容
 - (void)setContent{
     //设置三个imageBtn的图片
@@ -168,7 +180,7 @@ static const int imageBtnCount = 3;
 
 
 - (void)startTimer{
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     self.timer = timer;
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Masonry.h>
-
+#import "ZJILittleFunctionView.h"
 @interface ZJILeftView : UIView<UITableViewDataSource>
 
 @property (nonatomic, strong)UITableView *tableView;
@@ -16,4 +16,5 @@
 @property (nonatomic, strong)UILabel *nameLabel;
 @property (nonatomic, strong)UIButton *headPictureButton;
 @property (nonatomic, strong)UIButton *nameButton;
+@property (nonatomic, strong)ZJILittleFunctionView *littleView;
 @end

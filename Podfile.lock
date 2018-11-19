@@ -13,23 +13,29 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - JSONModel
   - Masonry
   - MMDrawerController
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JSONModel
     - Masonry
     - MMDrawerController
+    - SDWebImage
 
 SPEC CHECKSUMS:
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 376d62b11ff195ceff239c7cbf0d795f4489c951
+PODFILE CHECKSUM: 2c524dfae0098ca7f4d2c34f42e87274016cffed
 
 COCOAPODS: 1.5.3

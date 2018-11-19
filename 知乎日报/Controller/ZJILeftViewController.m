@@ -28,10 +28,13 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0 || indexPath.section == 1){
-        return 100;
+    if(indexPath.section == 0){
+        return 100.0/784 * kHeight;
     }
-    return 50;
+    if(indexPath.section == 1){
+        return 110.0/784 * kHeight;
+    }
+    return 50/784 * kHeight;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ZJIScrollerView.h"
+#import "ZJIHomeModel.h"
+#import "ZJIEyeryDayHomeModel.h"
+#import <UIImageView+WebCache.h>
 
 @interface ZJIHomeView : UIView<UITableViewDelegate, UITableViewDataSource,ZJIScrollerViewDelegate>
 
 @property (nonatomic, strong)UITableView *tableView;
 
 @property (nonatomic, strong)ZJIScrollerView *scrollerView;
+
+@property (nonatomic, strong)ZJIHomeModel *homeModel;
+@property (nonatomic, strong)NSMutableArray *homeModelMutableArray;
+@property (nonatomic, strong)ZJIHomeModel *eyeryDayHomeModel;
+- (void)fuzhiScrollerImage;
 @end

@@ -20,6 +20,7 @@
 @property (nonatomic, copy)NSArray *images;
 @property (nonatomic, strong)UIColor *currentPageColor;
 @property (nonatomic, strong)UIColor *pageColor;
+@property (nonatomic, copy)NSArray *title;
 //是否竖向滚动
 @property (nonatomic, assign, getter=isScrollDorectionPortrait) BOOL scrollDorectionPortrait;
 @property (weak, nonatomic)id <ZJIScrollerViewDelegate>delegate;

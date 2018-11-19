@@ -3,4 +3,5 @@ target '知乎日报' do
 pod'Masonry'
 pod'JSONModel'
 pod'MMDrawerController'
+pod'SDWebImage'
 end
