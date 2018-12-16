@@ -13,6 +13,7 @@
 @interface ZJIHomeView()
 @property (nonatomic,strong)dispatch_queue_t queue;
 @end
+//jkwts
 
 @implementation ZJIHomeView
 - (instancetype)initWithFrame:(CGRect)frame
