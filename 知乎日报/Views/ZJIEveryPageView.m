@@ -50,10 +50,13 @@
     [self.zanButton setImage:[UIImage imageNamed:@"点赞"] forState:UIControlStateNormal];
     [self.zanButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(180.0/440 * kWidth);
-        make.top.equalTo(self).offset(5.0/784 * kHeight);
-        make.width.mas_equalTo(40.0/440 * kWidth);
+        make.top.equalTo(self).offset(10.0/784 * kHeight);
+        make.width.mas_equalTo(60.0/440 * kWidth);
         make.height.mas_equalTo(40.0/784 * kHeight);
     }];
+    [self.zanButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 8, 0)];
+    [self.zanButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    self.zanButton.titleLabel.font = [UIFont systemFontOfSize:10];
     
     [self.shareButton setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
     [self.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {

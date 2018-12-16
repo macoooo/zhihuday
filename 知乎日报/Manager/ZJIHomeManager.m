@@ -21,6 +21,8 @@ static ZJIHomeManager *manager = nil;
     return manager;
 }
 - (void)fetchHomeDataWithSucceed:(ZJIHomeHandle)succeedBlock error:(ErrorHandle)errorBlock{
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    
     NSString *urlString = @"https://news-at.zhihu.com/api/4/news/latest";
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -29,18 +31,21 @@ static ZJIHomeManager *manager = nil;
     NSURLSessionDataTask *dataTask = [sharedSession dataTaskWithRequest: request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if(data && (error == nil)){
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            //NSLog(@"1111mmm%@",dict);
             NSError *err;
             ZJIHomeModel *homeModel = [[ZJIHomeModel alloc]initWithDictionary:dict error:&err];
-            //NSLog(@"1111tttt%@   %@",homeModel, err);
             succeedBlock(homeModel);
             
+            dispatch_semaphore_signal(sema);
         }
         else{
             errorBlock(error);
+            
+            dispatch_semaphore_signal(sema);
         }
     }];
     [dataTask resume];
+    
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
 - (void)fetchEveryDataWithDate:(NSString *)date Succeed:(ZJIHomeHandle)succeedBlock error:(ErrorHandle)errorBlock{
     NSString *urlString = [NSString stringWithFormat:@"https://news-at.zhihu.com/api/4/news/before/%@",date];

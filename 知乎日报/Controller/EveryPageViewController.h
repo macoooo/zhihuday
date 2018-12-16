@@ -10,12 +10,36 @@
 #import <WebKit/WebKit.h>
 #import "ZJIEveryPageView.h"
 #import "ZJIHomeViewController.h"
+#import "ZJICommentsViewController.h"
+#import "ZJIExtraNewsManage.h"
+#import "ZJIExtraNewsModel.h"
+#import "ZJIDataUtils.h"
+#import "ZJIHomeModel.h"
+#import "ZJIAlertView.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 
-@interface EveryPageViewController : UIViewController
-@property (nonatomic, assign)NSInteger id;
+@interface EveryPageViewController : UIViewController<WKUIDelegate ,UIScrollViewDelegate>
+@property (nonatomic, assign)NSInteger everyID;
 @property (nonatomic, strong)ZJIEveryPageView *everyPageView;
+@property (nonatomic, strong)ZJIExtraNewsModel *extraNewsModel;
+@property (nonatomic, assign)NSInteger nextID;
+@property (nonatomic, strong)WKWebView *webView;
+@property (nonatomic, strong)NSMutableArray *everyPageMutableArray;
+@property (nonatomic, assign)NSInteger row;
+@property (nonatomic, assign)NSInteger section;
+@property (nonatomic, assign)int flagID;
+@property (nonatomic, assign)NSInteger nextRow;
+@property (nonatomic, strong)ZJIHomeModel *homeModel;
+@property (nonatomic, assign)NSInteger days;
+@property (nonatomic, assign)NSInteger zanCount;
+@property (nonatomic, strong)UILabel *zanLabel;
+@property (nonatomic, assign)BOOL isSelectd;
+@property (nonatomic, assign)BOOL isLoading;
+@property (nonatomic, strong)ZJIAlertView *alertView;      
+
 - (void)loadWebView;
+- (void)updateEveryNews;
+- (void)updateSinceNowEveryDayNews;
 @end

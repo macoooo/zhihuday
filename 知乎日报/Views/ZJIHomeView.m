@@ -13,7 +13,6 @@
 @interface ZJIHomeView()
 @property (nonatomic,strong)dispatch_queue_t queue;
 @end
-//jkwts
 
 @implementation ZJIHomeView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -41,16 +40,17 @@
     if(section == 0){
         return 1;
     }
-    NSArray *rowCountArray = self.homeModel.stories;
-    return rowCountArray.count;
+    ZJIHomeModel *homeModel = self.homeModelMutableArray[section - 1];
+    return homeModel.stories.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.homeModelMutableArray.count;
+    NSLog(@"--%ld--self.homeModelMutableArray.count-", self.homeModelMutableArray.count);
+    return self.homeModelMutableArray.count + 1;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"cell0"];
@@ -65,12 +65,12 @@
         }
         return cell;
     }else{
-        ZJIStoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"storiesCell"];
+        ZJIStoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"storiesCell" forIndexPath:indexPath];
         if(!cell){
             cell = [[ZJIStoriesTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storiesCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        ZJIHomeModel *smallModel = self.homeModelMutableArray[indexPath.section];
+        ZJIHomeModel *smallModel = self.homeModelMutableArray[indexPath.section - 1];
         NSArray *storiesArray = [smallModel.stories[indexPath.row] images];
         NSString *imageString = storiesArray[0];
         dispatch_async(self.queue, ^{
@@ -84,6 +84,7 @@
 {
     NSMutableArray *topStoriesArray = [NSMutableArray array];
     NSArray *topStoryArray = self.homeModel.top_stories;
+    NSLog(@"---%ld--topStoryArray.count-", topStoryArray.count);
     for(int i = 0;i < topStoryArray.count;i++){
         NSString *imageString = [topStoryArray[i] sdImage];
         [topStoriesArray addObject:[self getImageFromURL:imageString]];

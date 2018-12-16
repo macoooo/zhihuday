@@ -12,7 +12,7 @@
 #import "ZJIEyeryDayHomeModel.h"
 #import <UIImageView+WebCache.h>
 
-@interface ZJIHomeView : UIView<UITableViewDelegate, UITableViewDataSource,ZJIScrollerViewDelegate>
+@interface ZJIHomeView : UIView<UITableViewDataSource,ZJIScrollerViewDelegate>
 
 @property (nonatomic, strong)UITableView *tableView;
 

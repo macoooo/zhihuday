@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Masonry.h>
+#import "ZJIExtraNewsModel.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 
@@ -18,5 +19,6 @@
 @property (nonatomic, strong)UIButton *zanButton;
 @property (nonatomic, strong)UIButton *shareButton;
 @property (nonatomic, strong)UIButton *commentButon;
+@property (nonatomic, strong)ZJIExtraNewsModel *extraModel;
 
 @end

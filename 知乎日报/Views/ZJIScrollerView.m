@@ -32,9 +32,7 @@ static const int imageBtnCount = 3;
         
         for(int i = 0;i < imageBtnCount;i++){
             UIButton *imageBtn = [[UIButton alloc]init];
-            //UILabel *titleLabel = [[UILabel alloc]init];
             [scrollerView addSubview:imageBtn];
-            //[scrollerView addSubview: titleLabel];
         }
         UIPageControl *pageControl = [[UIPageControl alloc]init];
         [self addSubview:pageControl];
@@ -58,14 +56,11 @@ static const int imageBtnCount = 3;
     //设置三张图片的位置，并为三个按钮添加点击事件
     for(int i = 0;i < imageBtnCount;i++){
         UIButton *imageBtn = self.scrollerView.subviews[i];
-        //UILabel *titleLabel = self.scrollerView.subviews[i];
         [imageBtn addTarget:self action:@selector(imageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         if(self.isScrollDorectionPortrait){
             imageBtn.frame = CGRectMake(0, i * height, width, height);
-            //titleLabel.frame = CGRectMake(0, i * height, width, height);
         }else{
             imageBtn.frame = CGRectMake(i * width, 0, width, height);
-            //titleLabel.frame = CGRectMake(i * width, 0, width, height);
         }
     }
     //设置contentOffSet,显示最中间的图片

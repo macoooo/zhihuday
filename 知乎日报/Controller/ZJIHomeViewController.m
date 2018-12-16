@@ -49,14 +49,14 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //[self updateLatestNews];
-//    NSLog(@"--%ld--", self.homeView.homeModelMutableArray.count);
+            [self updateLatestNews];
+            [self updateEveryNews];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.flag = 1;
-    self.days =  -1;
+    self.days =  0;
+    self.isLoading = NO;
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.07f green:0.51f blue:0.85f alpha:1.00f];
     self.navigationItem.title = @"今日热闻";
@@ -77,6 +77,7 @@
     [self.view addSubview:_homeView];
     _homeView.homeModelMutableArray = [NSMutableArray array];
     _homeView.tableView.delegate = self;
+    self.everyDayMutableArray = [NSMutableArray array];
     
     UIRefreshControl *refresh = [[WSRefreshControl alloc]init];
     refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中"];
@@ -85,22 +86,24 @@
     [_homeView.tableView addSubview:self.refreshControl];
     
     [self.refreshControl beginRefreshing];
-    [self updateLatestNews];
+    
     // Do any additional setup after loading the view.
 }
 - (void)refresh{
     if(self.refreshControl.isRefreshing){
         [self.homeView.homeModelMutableArray removeAllObjects];
         self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中......"];
-        [self addData];
+        //[self addData];
         self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
         [self.homeView.tableView reloadData];
         [self.refreshControl endRefreshing];
     }
 }
 - (void)addData{
-    [self updateLatestNews];
-    NSLog(@"usinging");
+    int count = 0;
+    while (count++ >= 1) {
+        self.homeView.homeModelMutableArray = self.everyDayMutableArray;
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -163,20 +166,25 @@
     [[ZJIHomeManager sharedManager] fetchHomeDataWithSucceed:^(ZJIHomeModel *homeModel) {
         self->_homeView.homeModel = homeModel;
         self.homeModel = homeModel;
-        [self.homeView.homeModelMutableArray addObject:self->_homeView.homeModel];
+        [self.homeView.homeModelMutableArray addObject:homeModel];
+        [self.everyDayMutableArray addObject:homeModel];
         self.flag = 0;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.homeView.tableView reloadData];
             [self.homeView fuzhiScrollerImage];
+            [self.homeView.tableView reloadData];
         });
     } error:^(NSError *error) {
         NSLog(@"更新错误");
     }];
     }
     self.isLoading = YES;
-    NSLog(@"bbbbbb%ldbbbbb",self.days);
+}
+- (void)updateEveryNews{
+    NSLog(@"update Date:%@",[ZJIDataUtils dateSecondStringBeforeDays:self.days]);
     [[ZJIHomeManager sharedManager] fetchEveryDataWithDate:[ZJIDataUtils dateSecondStringBeforeDays:self.days] Succeed:^(ZJIHomeModel *everyDayHomeModel) {
-        self->_homeView.eyeryDayHomeModel = everyDayHomeModel;    [self.homeView.homeModelMutableArray addObject:everyDayHomeModel];
+        self->_homeView.eyeryDayHomeModel = everyDayHomeModel;
+        [self.homeView.homeModelMutableArray addObject:everyDayHomeModel];
+        [self.everyDayMutableArray addObject:everyDayHomeModel];
         self.days--;
         self.isLoading = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -199,8 +207,6 @@
     [self.navigationController.parentViewController performSelector:@selector(openCloseMenu)];
 }
 
-
-
 - (void)scrollerView:(ZJIScrollerView *)scrollerView indexOfClickedImageBtn:(NSInteger)index
 {
     NSLog(@"点击");
@@ -219,21 +225,23 @@
     else{
         self.homeView.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
         [self setStatusBarBackgroundColor:[UIColor colorWithRed:0.07f green:0.51f blue:0.85f alpha:1.00f]];
-        self.navigationController.navigationBar.hidden = YES;
+        self.navigationController.navigationBar.hidden =YES;
     }
     CGRect bounds = scrollView.bounds;
     CGSize contentSize = scrollView.contentSize;
     float y = offsetY + bounds.size.height;
     float h = contentSize.height;
-    float reload_distance = -30;
-    NSLog(@"---%f--y-", y);
-    NSLog(@"---%f--h-", h);
-    if(y > h + reload_distance){
+    float reload_distance = 0;
+//    NSLog(@"---%f--y-", y);
+//    NSLog(@"---%f--h-", h);
+    if(y >= h + reload_distance){
         if(self.isLoading){
             return;
         }else{
-            [self updateLatestNews];
-            NSLog(@"using");
+            if(!_flag){
+                [self updateEveryNews];
+                self.isLoading = YES;
+           }
         }
     }
 }
@@ -282,20 +290,22 @@
 }
 
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
-    
     UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
     if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
         statusBar.backgroundColor = color;
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ZJIHomeModel *littleModel = self.homeView. homeModelMutableArray[indexPath.section];
+    ZJIHomeModel *littleModel = self.homeView.homeModelMutableArray[indexPath.section - 1];
     NSInteger transmitID = [littleModel.stories[indexPath.row] sdID];
-    NSLog(@"%ld", transmitID);
     [self updateEveryPageNews:transmitID];
     EveryPageViewController *everyPageViewController = [[EveryPageViewController alloc]init];
-    everyPageViewController.id = transmitID;
-    [self presentViewController:everyPageViewController animated:YES completion:nil];
+    everyPageViewController.everyID = transmitID;
+    everyPageViewController.row = indexPath.row;
+    everyPageViewController.section = indexPath.section - 1;
+    everyPageViewController.everyPageMutableArray = [[NSMutableArray alloc]initWithArray:self.homeView.homeModelMutableArray copyItems:YES];
+    everyPageViewController.days = self.days + 1;
+    [self.navigationController pushViewController:everyPageViewController animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
