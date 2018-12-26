@@ -40,12 +40,20 @@
     if(section == 0){
         return 1;
     }
-    ZJIHomeModel *homeModel = self.homeModelMutableArray[section - 1];
-    return homeModel.stories.count;
+    if(_latestNewsCacheModel){
+        return _latestNewsCacheModel.stories.count;
+    } else {
+        ZJIHomeModel *homeModel = self.homeModelMutableArray[section - 1];
+        return homeModel.stories.count;
+    }
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSLog(@"--%ld--self.homeModelMutableArray.count-", self.homeModelMutableArray.count);
+    if(_latestNewsCacheModel){
+        return 2;
+    }
     return self.homeModelMutableArray.count + 1;
 }
 
@@ -70,13 +78,19 @@
             cell = [[ZJIStoriesTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storiesCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        ZJIHomeModel *smallModel = self.homeModelMutableArray[indexPath.section - 1];
-        NSArray *storiesArray = [smallModel.stories[indexPath.row] images];
-        NSString *imageString = storiesArray[0];
-        dispatch_async(self.queue, ^{
-            [cell.storiesImageView  sd_setImageWithURL:[NSURL URLWithString:imageString]];
-        });
-        cell.titleLabel.text = [smallModel.stories[indexPath.row] title];
+        if(indexPath.section == 1 && _latestNewsCacheModel) {
+            cell.titleLabel.text = [_latestNewsCacheModel.stories[indexPath.row] title];
+            NSArray *imageArray = [_latestNewsCacheModel.stories[indexPath.row] images];
+            [cell.storiesImageView  sd_setImageWithURL:[NSURL URLWithString:imageArray[0]]];
+        } else {
+            ZJIHomeModel *smallModel = self.homeModelMutableArray[indexPath.section - 1];
+            NSArray *storiesArray = [smallModel.stories[indexPath.row] images];
+            NSString *imageString = storiesArray[0];
+            dispatch_async(self.queue, ^{
+                [cell.storiesImageView  sd_setImageWithURL:[NSURL URLWithString:imageString]];
+            });
+            cell.titleLabel.text = [smallModel.stories[indexPath.row] title];
+        }
         return cell;
     }
 }

@@ -10,6 +10,7 @@
 #import "ZJIHomeModel.h"
 #import "ZJIEyeryDayHomeModel.h"
 #import "ZJIEveryPageModel.h"
+#import "ZJIHomeDataBaseHandle.h"
 
 typedef void (^ZJIHomeHandle)(ZJIHomeModel *homeModel);
 
@@ -17,12 +18,15 @@ typedef void (^ZJIEveryDayHomeHandle)(ZJIEyeryDayHomeModel *eyeryDayHomeModel);
 typedef void (^ZJIEveryPageHandle)(ZJIEveryPageModel *everyPageModel);
 
 typedef void(^ErrorHandle)(NSError *error);
+typedef void (^ErrorSaveHandle)(NSError *error, ZJIHomeModel *latestNewsModel);
 
 @interface ZJIHomeManager : NSObject
 
+@property (nonatomic, strong)ZJIHomeDataBaseHandle *homeDataBaseHandle;
+
 +(instancetype)sharedManager;
 
-- (void)fetchHomeDataWithSucceed:(ZJIHomeHandle)succeedBlock error:(ErrorHandle)errorBlock;
+- (void)fetchHomeDataWithSucceed:(ZJIHomeHandle)succeedBlock error:(ErrorSaveHandle)errorBlock;
 
 - (void)fetchEveryDataWithDate:(NSString *)date Succeed:(ZJIHomeHandle)succeedBlock error:(ErrorHandle)errorBlock;
 

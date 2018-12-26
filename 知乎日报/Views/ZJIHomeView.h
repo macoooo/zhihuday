@@ -21,5 +21,6 @@
 @property (nonatomic, strong)ZJIHomeModel *homeModel;
 @property (nonatomic, strong)NSMutableArray *homeModelMutableArray;
 @property (nonatomic, strong)ZJIHomeModel *eyeryDayHomeModel;
+@property (nonatomic, strong)ZJIHomeModel *latestNewsCacheModel;
 - (void)fuzhiScrollerImage;
 @end

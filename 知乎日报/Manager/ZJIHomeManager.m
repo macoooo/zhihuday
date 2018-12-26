@@ -20,7 +20,7 @@ static ZJIHomeManager *manager = nil;
     });
     return manager;
 }
-- (void)fetchHomeDataWithSucceed:(ZJIHomeHandle)succeedBlock error:(ErrorHandle)errorBlock{
+- (void)fetchHomeDataWithSucceed:(ZJIHomeHandle)succeedBlock error:(ErrorSaveHandle)errorBlock{
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
     NSString *urlString = @"https://news-at.zhihu.com/api/4/news/latest";
@@ -35,10 +35,16 @@ static ZJIHomeManager *manager = nil;
             ZJIHomeModel *homeModel = [[ZJIHomeModel alloc]initWithDictionary:dict error:&err];
             succeedBlock(homeModel);
             
+            [[ZJIHomeDataBaseHandle shareInstance] createTable] ;
+            [[ZJIHomeDataBaseHandle shareInstance] insertIntoDataBase:dict] ;
+            
             dispatch_semaphore_signal(sema);
         }
         else{
-            errorBlock(error);
+            NSDictionary *dict = [[ZJIHomeDataBaseHandle shareInstance] selectAllDataFromDataBase];
+            ZJIHomeModel *latestNewsModel = [[ZJIHomeModel alloc]initWithDictionary:dict error:nil];
+            NSLog(@"%@---latestNewsModel-----",latestNewsModel);
+            errorBlock(error, latestNewsModel);
             
             dispatch_semaphore_signal(sema);
         }
@@ -56,10 +62,8 @@ static ZJIHomeManager *manager = nil;
     NSURLSessionDataTask *dataTask = [sharedSession dataTaskWithRequest: request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if(data && (error == nil)){
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            //NSLog(@"2222%@",dict);
             NSError *err;
             ZJIHomeModel *everyDayHomeModel = [[ZJIHomeModel alloc]initWithDictionary:dict error:&err];
-            //NSLog(@"2222tttt%@   %@",everyDayHomeModel, err);
             succeedBlock(everyDayHomeModel);
         }
         else{

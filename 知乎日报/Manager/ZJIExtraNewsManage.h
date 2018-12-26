@@ -11,6 +11,7 @@
 
 typedef void (^ExtraNewsHandle)(ZJIExtraNewsModel *extraNewsModel);
 typedef void (^ErrorHandle)(NSError *error);
+
 @interface ZJIExtraNewsManage : NSObject
 +(instancetype)sharedManager;
 

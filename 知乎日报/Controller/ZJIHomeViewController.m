@@ -43,6 +43,9 @@
 @property (nonatomic, strong)UITapGestureRecognizer *tapToHideLeftMenu;
 @property (nonatomic, strong)UIPanGestureRecognizer *pan;
 @property (nonatomic, assign)BOOL isLoading;
+
+@property (nonatomic, copy)NSString *fileName;
+
 @end
 
 @implementation ZJIHomeViewController
@@ -173,11 +176,12 @@
             [self.homeView fuzhiScrollerImage];
             [self.homeView.tableView reloadData];
         });
-    } error:^(NSError *error) {
-        NSLog(@"更新错误");
+    } error:^(NSError *error, ZJIHomeModel *latestNewsModel) {
+        self.homeView.latestNewsCacheModel = latestNewsModel;
+        NSLog(@"%@----self.homeView.latestNewsCacheModel---",self.homeView.latestNewsCacheModel);
     }];
-    }
     self.isLoading = YES;
+    }
 }
 - (void)updateEveryNews{
     NSLog(@"update Date:%@",[ZJIDataUtils dateSecondStringBeforeDays:self.days]);
@@ -232,8 +236,6 @@
     float y = offsetY + bounds.size.height;
     float h = contentSize.height;
     float reload_distance = 0;
-//    NSLog(@"---%f--y-", y);
-//    NSLog(@"---%f--h-", h);
     if(y >= h + reload_distance){
         if(self.isLoading){
             return;
@@ -244,6 +246,7 @@
            }
         }
     }
+    
 }
 //创建纯色图片
 + (UIImage *)createImageWithColor:(UIColor *)color {

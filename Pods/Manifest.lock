@@ -1,4 +1,7 @@
 PODS:
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - JSONModel (1.8.0)
   - Masonry (1.1.0)
   - MMDrawerController (0.6.0):
@@ -18,6 +21,7 @@ PODS:
   - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
+  - FMDB
   - JSONModel
   - Masonry
   - MMDrawerController
@@ -25,17 +29,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FMDB
     - JSONModel
     - Masonry
     - MMDrawerController
     - SDWebImage
 
 SPEC CHECKSUMS:
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 2c524dfae0098ca7f4d2c34f42e87274016cffed
+PODFILE CHECKSUM: 7f681e2fd65d0e75c4a734ec062e64f87d307f5e
 
 COCOAPODS: 1.5.3

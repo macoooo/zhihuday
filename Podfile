@@ -4,4 +4,5 @@ pod'Masonry'
 pod'JSONModel'
 pod'MMDrawerController'
 pod'SDWebImage'
+pod'FMDB'
 end

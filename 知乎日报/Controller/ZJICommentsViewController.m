@@ -136,7 +136,6 @@
         
         _tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
         _tap.numberOfTapsRequired = 1;
-        [headerView addGestureRecognizer:_tap];
         
         if(section == 0){
             if(self.customView.longCommentModel.comments.count != 0){
@@ -156,6 +155,7 @@
         }
         else{
             headerLabel.text = [NSString stringWithFormat:@"%ld条短评",self.customView.shortCommentModel.comments.count];
+            [headerView addGestureRecognizer:_tap];
         }
     return headerView;
 }
