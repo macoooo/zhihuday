@@ -11,6 +11,7 @@
 #import "ZJIHomeModel.h"
 #import "ZJIEyeryDayHomeModel.h"
 #import <UIImageView+WebCache.h>
+#import "ZJIHomeDataBaseHandle.h"
 
 @interface ZJIHomeView : UIView<UITableViewDataSource,ZJIScrollerViewDelegate>
 
@@ -22,5 +23,7 @@
 @property (nonatomic, strong)NSMutableArray *homeModelMutableArray;
 @property (nonatomic, strong)ZJIHomeModel *eyeryDayHomeModel;
 @property (nonatomic, strong)ZJIHomeModel *latestNewsCacheModel;
+@property (nonatomic, strong)NSMutableArray *imageDataArray;
++ (UIImage *)getImageFromData:(NSData *)data;
 - (void)fuzhiScrollerImage;
 @end

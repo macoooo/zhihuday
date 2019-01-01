@@ -18,7 +18,7 @@ typedef void (^ZJIEveryDayHomeHandle)(ZJIEyeryDayHomeModel *eyeryDayHomeModel);
 typedef void (^ZJIEveryPageHandle)(ZJIEveryPageModel *everyPageModel);
 
 typedef void(^ErrorHandle)(NSError *error);
-typedef void (^ErrorSaveHandle)(NSError *error, ZJIHomeModel *latestNewsModel);
+typedef void (^ErrorSaveHandle)(NSError *error, ZJIHomeModel *latestNewsModel, NSMutableArray *dataArray);
 
 @interface ZJIHomeManager : NSObject
 

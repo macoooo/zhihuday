@@ -10,14 +10,15 @@
 #import <FMDB.h>
 #import "ZJIHomeModel.h"
 
+
 @interface ZJIHomeDataBaseHandle : NSObject
 +(ZJIHomeDataBaseHandle *)shareInstance;
 - (void)createTable;
 //缓存图片
 - (void)creatScrollerViewImageTable;
-- (void)insertScrollerViewImageIntoDataBase:(ZJIHomeModel *)latestNewsModel;
 - (void)insertIntoDataBase:(NSDictionary *)homeDictionary;
 - (void)deleteDataFromDataBase:(NSDictionary *)homeDictionary;
 - (void)updateFromDataBase:(NSDictionary *)homeDictionary;
 - (NSDictionary *)selectAllDataFromDataBase;
+- (NSMutableArray *)selectImageDataFromDataBase;
 @end

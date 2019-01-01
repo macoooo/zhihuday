@@ -35,16 +35,21 @@ static ZJIHomeManager *manager = nil;
             ZJIHomeModel *homeModel = [[ZJIHomeModel alloc]initWithDictionary:dict error:&err];
             succeedBlock(homeModel);
             
-            [[ZJIHomeDataBaseHandle shareInstance] createTable] ;
-            [[ZJIHomeDataBaseHandle shareInstance] insertIntoDataBase:dict] ;
             
+            [[ZJIHomeDataBaseHandle shareInstance] createTable];
+            [[ZJIHomeDataBaseHandle shareInstance] insertIntoDataBase:dict] ;
+            NSDictionary *dictt = [[ZJIHomeDataBaseHandle shareInstance] selectAllDataFromDataBase];
+            ZJIHomeModel *latestNewsModel = [[ZJIHomeModel alloc]initWithDictionary:dictt error:nil];
+            NSLog(@"%@---latestNewsModel-----",latestNewsModel);
             dispatch_semaphore_signal(sema);
         }
         else{
             NSDictionary *dict = [[ZJIHomeDataBaseHandle shareInstance] selectAllDataFromDataBase];
             ZJIHomeModel *latestNewsModel = [[ZJIHomeModel alloc]initWithDictionary:dict error:nil];
+            NSMutableArray *imageDataArray = [[ZJIHomeDataBaseHandle shareInstance]selectImageDataFromDataBase];
             NSLog(@"%@---latestNewsModel-----",latestNewsModel);
-            errorBlock(error, latestNewsModel);
+            NSLog(@"%@----imageData----",imageDataArray);
+            errorBlock(error, latestNewsModel,imageDataArray);
             
             dispatch_semaphore_signal(sema);
         }

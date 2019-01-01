@@ -11,6 +11,7 @@
 #import "ZJIHomeModel.h"
 #import "ZJIEveryPageModel.h"
 #import "EveryPageViewController.h"
+#import "ZJIHomeDataBaseHandle.h"
 
 
 @interface ZJIHomeViewController : UIViewController

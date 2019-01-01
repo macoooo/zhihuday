@@ -97,11 +97,17 @@
 - (void)fuzhiScrollerImage
 {
     NSMutableArray *topStoriesArray = [NSMutableArray array];
-    NSArray *topStoryArray = self.homeModel.top_stories;
+    NSArray *topStoryArray = [NSArray array];
+    if(self.latestNewsCacheModel){
+        topStoryArray = self.imageDataArray;
+    }else{
+        topStoryArray = self.homeModel.top_stories;
+    }
+    
+    //NSMutableArray *imageDataArray = [NSMutableArray array];
     NSLog(@"---%ld--topStoryArray.count-", topStoryArray.count);
     for(int i = 0;i < topStoryArray.count;i++){
-        NSString *imageString = [topStoryArray[i] sdImage];
-        [topStoriesArray addObject:[self getImageFromURL:imageString]];
+        [topStoriesArray addObject:[UIImage imageWithData:_imageDataArray[i]]];
     }
     
     _scrollerView.images = [NSArray arrayWithArray:topStoriesArray];
@@ -111,6 +117,10 @@
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
     result = [UIImage imageWithData:data];
     return result;
+}
++ (UIImage *)getImageFromData:(NSData *)data{
+    UIImage *image = [UIImage imageWithData:data];
+    return image;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

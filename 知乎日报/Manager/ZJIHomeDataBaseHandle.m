@@ -16,7 +16,6 @@ static ZJIHomeDataBaseHandle *homeDataBaseHandle = nil;
         if(!homeDataBaseHandle) {
             homeDataBaseHandle = [[ZJIHomeDataBaseHandle alloc]init];
             [homeDataBaseHandle openDataBase];
-            [homeDataBaseHandle createTable];
         }
     }
     return homeDataBaseHandle;
@@ -71,7 +70,7 @@ static FMDatabase * database = nil;
 - (void)createTable{
     [self openDataBase];
     if(![database tableExists:@"t_latestNews"]){
-       [database executeUpdate:@"CREATE TABLE 't_latestNews' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'homeLatestNews' text, 'scrollerImageData' BLOB )"];
+    [database executeUpdate:@"CREATE TABLE 't_latestNews' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'homeLatestNews' text, 'scrollerImageData' BLOB)"];
         NSLog(@"创建表成功");
     }
     
@@ -79,6 +78,12 @@ static FMDatabase * database = nil;
 }
 - (void)creatScrollerViewImageTable{
     
+}
+- (void)dropTable{
+    [self openDataBase];
+    [database executeUpdate:@"DROP TABLE 't_latestNews'"];
+    
+    [self closeDataBase];
 }
 -(NSString*)dictionaryToJson:(NSDictionary *)dic{
     NSError *parseError = nil;
@@ -98,7 +103,7 @@ static FMDatabase * database = nil;
     NSArray *topStories = [NSArray array];
     topStories = homeDictionary[@"top_stories"];
     for(int i = 0;i < topStories.count;i++){
-        NSString *imageString = topStories[i][@"sdImage"];
+        NSString *imageString = topStories[i][@"image"];
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]];
         [database executeUpdate:@" INSERT INTO 't_latestNews' (scrollerImageData) VALUES (?)",imageData];
     }
@@ -137,12 +142,30 @@ static FMDatabase * database = nil;
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     while ([resultSet next]) {
         NSString *jsonString = [resultSet stringForColumn:@"homeLatestNews"];
-        NSData *imageData = [resultSet dataForColumn:@"scrollerImageData"];
-        dic = [self dictionaryWithJsonString:jsonString];
+        if(jsonString){
+            dic = [self dictionaryWithJsonString:jsonString];
+        }
     }
     NSLog(@"%@---dictionaryWithJsonString--", dic);
     [self closeDataBase];
     return dic;
+}
+- (NSMutableArray *)selectImageDataFromDataBase{
+    [self openDataBase];
+    
+    FMResultSet * resultSet = [database executeQuery:@" SELECT * FROM 't_latestNews'"];
+    NSMutableArray *imageDataArray = [NSMutableArray array];
+    NSData *imageData = nil;
+    while ([resultSet next]) {
+        imageData = [resultSet dataForColumn:@"scrollerImageData"];
+        if(imageData){
+            [imageDataArray addObject:imageData];
+        }
+    }
+    
+    NSLog(@"%@---imageDataArray--",imageDataArray);
+    [self closeDataBase];
+    return imageDataArray;
 }
 -(NSMutableDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
     if (jsonString == nil) {
@@ -160,5 +183,4 @@ static FMDatabase * database = nil;
     }
     return dic;
 }
-
 @end

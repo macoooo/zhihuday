@@ -172,17 +172,39 @@
         [self.homeView.homeModelMutableArray addObject:homeModel];
         [self.everyDayMutableArray addObject:homeModel];
         self.flag = 0;
+        NSMutableArray *imageDataArray = [[ZJIHomeDataBaseHandle shareInstance]selectImageDataFromDataBase];
+        self.homeView.imageDataArray = imageDataArray;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.homeView fuzhiScrollerImage];
             [self.homeView.tableView reloadData];
+             [self.homeView fuzhiScrollerImage];
         });
-    } error:^(NSError *error, ZJIHomeModel *latestNewsModel) {
+    } error:^(NSError *error, ZJIHomeModel *latestNewsModel,NSMutableArray *dataArray) {
         self.homeView.latestNewsCacheModel = latestNewsModel;
         NSLog(@"%@----self.homeView.latestNewsCacheModel---",self.homeView.latestNewsCacheModel);
+        self.homeView.imageDataArray = [NSMutableArray array];
+        self.homeView.imageDataArray = dataArray;
+//        NSLog(@"%@---self.homeView.imageDataArray-----",self.homeView.imageDataArray);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.homeView.tableView reloadData];
+            [self.homeView fuzhiScrollerImage];
+        });
     }];
     self.isLoading = YES;
     }
 }
+//- (void)fuzhiScrollerImage
+//{
+//    NSMutableArray *topStoriesArray = [NSMutableArray array];
+//    NSArray *topStoryArray = self.homeModel.top_stories;
+//    NSLog(@"---%ld--topStoryArray.count-", topStoryArray.count);
+//    for(int i = 0;i < topStoryArray.count;i++){
+//        //NSString *imageString = [topStoryArray[i] sdImage];
+//        NSData *imageData = [[ZJIHomeDataBaseHandle shareInstance] selectImageDataFromDataBase];
+//        [topStoriesArray addObject:[UIImage imageWithData:imageData]];
+//    }
+//    
+//    self.homeView.scrollerView.images = [NSArray arrayWithArray:topStoriesArray];
+//}
 - (void)updateEveryNews{
     NSLog(@"update Date:%@",[ZJIDataUtils dateSecondStringBeforeDays:self.days]);
     [[ZJIHomeManager sharedManager] fetchEveryDataWithDate:[ZJIDataUtils dateSecondStringBeforeDays:self.days] Succeed:^(ZJIHomeModel *everyDayHomeModel) {
